@@ -6,8 +6,28 @@
 
 using namespace std;
 
-// ===== ФУНКЦИИ =====
+void deleteCustomerById() {
+    system("cls");
 
+    // показ клиентов перед удалением
+    showCustomers();
+
+    int id;
+    cout << "\nВведите ID клиента для удаления: ";
+    cin >> id;
+
+    ifstream file("customers.bin", ios::binary);
+    ofstream temp("temp.bin", ios::binary);
+
+    Customer c;
+    bool found = false;
+
+    while (file.read((char*)&c, sizeof(c))) {
+        if ()
+    }
+}
+
+// ===== ФУНКЦИИ =====
 void addRecord() {
     VinylRecord r;
     r.input();
