@@ -5,8 +5,7 @@
 
 using namespace std;
 
-class VinylRecord : public {
-IDataEntity
+class VinylRecord : public IDataEntity {
 private:
     int id;
     char artist[50];
@@ -17,7 +16,7 @@ private:
     int quantity;
 
 public:
-    void input() {
+    void input() override {
         cout << "\nID: ";
         cin >> id;
         cin.ignore();
@@ -41,7 +40,7 @@ public:
         cin >> quantity;
     }
 
-    void print() {
+    void print() override {
         cout << left
             << setw(5) << id
             << setw(20) << artist

@@ -6,6 +6,8 @@
 
 using namespace std;
 
+void showCustomers();
+
 void deleteCustomerById() {
     system("cls");
 
