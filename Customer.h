@@ -1,10 +1,11 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include "IDataEntity.h"
 
 using namespace std;
 
-class Customer {
+class Customer : public IDataEntity {
 private:
     int id;
     char name[50];
