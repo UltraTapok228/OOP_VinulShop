@@ -43,4 +43,6 @@ public:
             << setw(15) << fixed << setprecision(2) << totalSpent
             << endl;
     }
+
+    int getId() { return id; }
 };
