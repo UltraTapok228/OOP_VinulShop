@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include "IDataEntity.h"
 
 using namespace std;
 
-class VinylRecord {
+class VinylRecord : public {
+IDataEntity
 private:
     int id;
     char artist[50];

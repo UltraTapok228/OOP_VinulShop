@@ -23,7 +23,19 @@ void deleteCustomerById() {
     bool found = false;
 
     while (file.read((char*)&c, sizeof(c))) {
-        if ()
+        if (c.getId() != id)
+            temp.write((char*)&c, sizeof(c));
+        else
+            found = true;
+
+        file.close();
+        temp.close();
+
+        remove("customers.bin");
+        rename("temp.bin", "customers.bin");
+
+        cout << (found ? "Клиент удален.\n" : "ID не найден.\n");
+        system("pause");
     }
 }
 
