@@ -1,9 +1,6 @@
 #pragma once
-#include <iostream>
-#include <iomanip>
 #include "IDataEntity.h"
-
-using namespace std;
+#include <iomanip>
 
 class Customer : public IDataEntity {
 private:
@@ -15,7 +12,7 @@ private:
     float totalSpent;
 
 public:
-    void input() {
+    void input() override {
         cout << "\nID клиента: ";
         cin >> id;
         cin.ignore();
@@ -36,7 +33,7 @@ public:
         cin >> totalSpent;
     }
 
-    void print() {
+    void print() override {
         cout << left
             << setw(5) << id
             << setw(25) << name
@@ -45,5 +42,15 @@ public:
             << endl;
     }
 
-    int getId() { return id; }
+    int getId() override {
+        return id;
+    }
+
+    int getPurchasesCount() { return purchasesCount; }
+    float getTotalSpent() { return totalSpent; }
+
+    ~Customer() {
+        // деструктор
+        // тут история аналогична ~VinulRecord.h
+    }
 };

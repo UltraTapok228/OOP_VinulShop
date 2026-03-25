@@ -1,9 +1,6 @@
 #pragma once
-#include <iostream>
-#include <iomanip>
 #include "IDataEntity.h"
-
-using namespace std;
+#include <iomanip>
 
 class VinylRecord : public IDataEntity {
 private:
@@ -39,7 +36,8 @@ public:
         cout << " оличество: ";
         cin >> quantity;
     }
-
+    
+    // красивый вывод информации о товаре
     void print() override {
         cout << left
             << setw(5) << id
@@ -52,9 +50,18 @@ public:
             << endl;
     }
 
-    int getId() { return id; }
+    int getId() override {
+        return id;
+    }
+
     float getPrice() { return price; }
-    int getYear() { return year; }
-    char* getArtist() { return artist; }
-    char* getGenre() { return genre; }
+    int getQuantity() { return quantity; }
+
+    ~VinylRecord() {
+        // деструктор
+        // ѕочему пустой? ” нас в классах обычные типы 
+        // или же статические массивы
+        // поэтому они автоматом очищаютс€ сами
+        // тоесть он пустой потому что нет динамической пам€ти
+    }
 };
