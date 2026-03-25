@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// =-=-=-=-= Добавление (полиморфизм) =-=-=-=-=
+// =-=-=-=-= Добавление =-=-=-=-=
 template <typename T>
 void addEntity(T* entity, const char* filename) {
     entity->input();
@@ -149,7 +149,7 @@ void showSummary() {
     system("pause");
 }
 
-// ===== Меню =====
+// =-=-=-=-= Меню =-=-=-=-=
 void menu() {
     cout << "====== ПластинкаSHOP ======\n";
     cout << "1 - Добавить пластинку\n";
