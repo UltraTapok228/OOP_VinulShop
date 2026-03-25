@@ -1,6 +1,10 @@
 #pragma once
-#include "IDataEntity.h"
+#include <iostream>
 #include <iomanip>
+#include <cstring>
+#include "IDataEntity.h"
+
+using namespace std;
 
 class Customer : public IDataEntity {
 private:
@@ -12,6 +16,13 @@ private:
     float totalSpent;
 
 public:
+    Customer() {}
+
+    ~Customer() {
+        // тут аналогично с VinylRecord
+    }
+
+    // =-=-=-=-= Ввод данных =-=-=-=-=
     void input() override {
         cout << "\nID клиента: ";
         cin >> id;
@@ -33,24 +44,24 @@ public:
         cin >> totalSpent;
     }
 
+    // =-=-=-=-= Красивый вывод =-=-=-=-=
     void print() override {
         cout << left
             << setw(5) << id
             << setw(25) << name
+            << setw(20) << phone
+            << setw(25) << email
             << setw(10) << purchasesCount
             << setw(15) << fixed << setprecision(2) << totalSpent
             << endl;
     }
 
-    int getId() override {
-        return id;
-    }
+    // =-=-=-=-= Геттеры =-=-=-=-=
+    int getId() const { return id; }
+    const char* getName() const { return name; }
+    const char* getPhone() const { return phone; }
+    const char* getEmail() const { return email; }
+    int getPurchasesCount() const { return purchasesCount; }
+    float getTotalSpent() const { return totalSpent; }
 
-    int getPurchasesCount() { return purchasesCount; }
-    float getTotalSpent() { return totalSpent; }
-
-    ~Customer() {
-        // деструктор
-        // тут история аналогична ~VinulRecord.h
-    }
 };

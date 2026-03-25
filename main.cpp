@@ -19,16 +19,50 @@ void addEntity(T* entity, const char* filename) {
     system("pause");
 }
 
-// =-=-=-=-= Вывод =-=-=-=-=
+// =-=-=-=-= Красивый вывод =-=-=-=-=
 template <typename T>
 void showEntities(const char* filename) {
     system("cls");
 
     ifstream file(filename, ios::binary);
+    if (!file) {
+        cout << "Файл не найден\n";
+        system("pause");
+        return;
+    }
+
     T obj;
 
+    // заголовки
+    if (strcmp(filename, "records.bin") == 0) {
+        cout << "\n=== СПИСОК ПЛАСТИНОК ===\n";
+        cout << left
+            << setw(5) << "ID"
+            << setw(20) << "Исполнитель"
+            << setw(25) << "Альбом"
+            << setw(15) << "Жанр"
+            << setw(8) << "Год"
+            << setw(10) << "Цена"
+            << setw(10) << "Кол-во"
+            << endl;
+
+        cout << string(93, '-') << endl;
+    }
+    else {
+        cout << "\n=== СПИСОК КЛИЕНТОВ ===\n";
+        cout << left
+            << setw(5) << "ID"
+            << setw(25) << "ФИО"
+            << setw(20) << "Телефон"
+            << setw(25) << "Email"
+            << setw(10) << "Покупки"
+            << setw(15) << "Сумма"
+            << endl;
+
+        cout << string(100, '=') << endl;
+    }
+
     while (file.read((char*)&obj, sizeof(obj))) {
-        IDataEntity* e = &obj;
         obj.print();
     }
 

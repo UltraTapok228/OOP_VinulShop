@@ -1,6 +1,10 @@
 #pragma once
-#include "IDataEntity.h"
+#include <iostream>
 #include <iomanip>
+#include <cstring>
+#include "IDataEntity.h"
+
+using namespace std;
 
 class VinylRecord : public IDataEntity {
 private:
@@ -13,6 +17,17 @@ private:
     int quantity;
 
 public:
+    VinylRecord() {}
+
+    ~VinylRecord() {
+        // деструктор
+        // Почему пустой? У нас в классах обычные типы 
+        // или же статические массивы
+        // поэтому они автоматом очищаются сами
+        // тоесть он пустой потому что нет динамической памяти
+    }
+
+    // =-=-=-=-= Ввод =-=-=-=-=
     void input() override {
         cout << "\nID: ";
         cin >> id;
@@ -36,8 +51,8 @@ public:
         cout << "Количество: ";
         cin >> quantity;
     }
-    
-    // красивый вывод информации о товаре
+
+    // =-=-=-=-= Красивый вывод =-=-=-=-=
     void print() override {
         cout << left
             << setw(5) << id
@@ -50,18 +65,12 @@ public:
             << endl;
     }
 
-    int getId() override {
-        return id;
-    }
-
-    float getPrice() { return price; }
-    int getQuantity() { return quantity; }
-
-    ~VinylRecord() {
-        // деструктор
-        // Почему пустой? У нас в классах обычные типы 
-        // или же статические массивы
-        // поэтому они автоматом очищаются сами
-        // тоесть он пустой потому что нет динамической памяти
-    }
+    // =-=-=-=-= Геттеры =-=-=-=-=
+    int getId() const { return id; }
+    const char* getArtist() const { return artist; }
+    const char* getAlbum() const { return album; }
+    const char* getGenre() const { return genre; }
+    int getYear() const { return year; }
+    float getPrice() const { return price; }
+    int getQuantity() const { return quantity; }
 };
