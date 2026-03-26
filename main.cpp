@@ -11,7 +11,8 @@ template <typename T>
 void addEntity(T* entity, const char* filename) {
     entity->input();
 
-    ofstream file(filename, ios::binary | ios::app);
+    ofstream file(filename, ios::binary | ios::app); // поток вывод, т.е. осуществляется запись в файл, файл открывается в бинарном режиме(ios::binary),
+                                                     // файл открывается до записи(ios::app)
     file.write((char*)entity, sizeof(T));
     file.close();
 
@@ -46,20 +47,20 @@ void showEntities(const char* filename) {
             << setw(10) << "Кол-во"
             << endl;
 
-        cout << string(93, '-') << endl;
+        cout << string(110, '-') << endl;
     }
     else {
         cout << "\n=== СПИСОК КЛИЕНТОВ ===\n";
         cout << left
             << setw(5) << "ID"
-            << setw(25) << "ФИО"
+            << setw(35) << "ФИО"
             << setw(20) << "Телефон"
-            << setw(25) << "Email"
+            << setw(30) << "Email"
             << setw(10) << "Покупки"
             << setw(15) << "Сумма"
             << endl;
 
-        cout << string(100, '=') << endl;
+        cout << string(110, '=') << endl;
     }
 
     while (file.read((char*)&obj, sizeof(obj))) {
@@ -81,7 +82,7 @@ void deleteById(const char* filename) {
     cout << "\nВведите ID: ";
     cin >> id;
 
-    ifstream file(filename, ios::binary);
+    ifstream file(filename, ios::binary); // программа читает бинарный файл
     ofstream temp("temp.bin", ios::binary);
 
     T obj;

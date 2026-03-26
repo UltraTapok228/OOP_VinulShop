@@ -48,9 +48,9 @@ public:
     void print() override {
         cout << left
             << setw(5) << id
-            << setw(25) << name
+            << setw(35) << name
             << setw(20) << phone
-            << setw(25) << email
+            << setw(30) << email
             << setw(10) << purchasesCount
             << setw(15) << fixed << setprecision(2) << totalSpent
             << endl;
